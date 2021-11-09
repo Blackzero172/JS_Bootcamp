@@ -17,6 +17,9 @@ console.log(objectArray);
 let arrayObject = Object.assign({},arr2);
 console.log(arrayObject);
 
+// is Array?
+console.log(Array.isArray(arr2));
+
 // Non-Referenced Array
 let arr3 = Array.from(arr2);
 arr3[9] = -10;
