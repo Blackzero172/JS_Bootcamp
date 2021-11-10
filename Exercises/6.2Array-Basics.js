@@ -1,31 +1,31 @@
 let people = ["Greg", "Mary", "Devon", "James"];
 // Console Logging All People
 for (let i = 0; i < people.length; i++) {
-  console.log(people[i]);
+	console.log(people[i]);
 }
 
 // Removing Greg
-people.splice(people.indexOf("Greg"), 1);
+people.shift();
 console.log(people);
 
 // Removing James
-people.splice(people.indexOf("James"), 1);
+people.pop();
 console.log(people);
 
 // Adding Matt
-people.splice(0, 0, "Matt");
+people.unshift("Matt");
 console.log(people);
 
 //Adding my Name
-people.splice(people.length, 0, "Ali");
+people.push("Ali");
 console.log(people);
 
 // Logging all people and stopping at Mary
 for (let i = 0; i < people.length; i++) {
-  console.log(people[i]);
-  if (people[i] == "Mary") {
-    i = people.length;
-  }
+	console.log(people[i]);
+	if (people[i] == "Mary") {
+		i = people.length;
+	}
 }
 
 // Coping Array
