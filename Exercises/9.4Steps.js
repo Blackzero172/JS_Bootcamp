@@ -1,11 +1,11 @@
 function step(num) {
-	for (let i = 0; i <= num; i++) {
+	for (let row = 0; row <= num; row++) {
 		let string = "";
-		let j = 0;
-		for (; j <= i; j++) {
+		let hashtag = 0;
+		for (; hashtag <= row; hashtag++) {
 			string += "# ";
 		}
-		for (let k = num; k >= j; k--) {
+		for (let dots = num; dots >= hashtag; dots--) {
 			string += ". ";
 		}
 
