@@ -42,7 +42,7 @@ bookUtils.isSamePublisher = function (book1, book2) {
 	) {
 		samePublisher = true;
 	}
-    return samePublisher;
+	return samePublisher;
 };
 
 bookUtils.setEdition(firstBook, 2021);
@@ -60,7 +60,6 @@ bookUtils.setTranslator(secondBook, { translator: "Hwan", language: "Korean" });
 bookUtils.setPublisher(firstBook, { name: "Riot Games", location: "USA" });
 bookUtils.setPublisher(secondBook, { name: "Riot Games", location: "USA" });
 
-
-console.log(firstBook)
-console.log(secondBook)
-console.log(bookUtils.isSamePublisher(firstBook,secondBook));
+console.log(firstBook);
+console.log(secondBook);
+console.log(bookUtils.isSamePublisher(firstBook, secondBook));
