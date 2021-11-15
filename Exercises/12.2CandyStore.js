@@ -47,15 +47,13 @@ function addCandy(candyStore, id, name, price) {
 addCandy(candyStore, "154df", "KotKut", 5);
 
 function buyCandy(candyStore, id) {
-	let wantedCandy;
-	availableCandy = candyStore.candies;
-	availableCandy.forEach(function (candy) {
-		if (candy.id === id) {
-			wantedCandy = candy;
-			candy.amount -= 1;
-		}
-	});
-	candyStore.cashRegister += wantedCandy.price;
+	let wantedCandy = getCandy(id);
+	if (wantedCandy.amount > 0) {
+		candyStore.cashRegister += wantedCandy.price;
+		wantedCandy.amount--;
+	} else {
+		console.log("This candy is out of stock,please check back later");
+	}
 }
 buyCandy(candyStore, "154df");
 console.log(candyStore);
