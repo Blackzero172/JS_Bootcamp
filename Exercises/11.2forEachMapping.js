@@ -71,7 +71,6 @@ function shiftLetters(string) {
 	});
 	return `Encoded UTF-16 String :(${result})   Decoded UTF-16 String:(${decodedResult}) `;
 }
-
 function swapCase(string) {
 	string = string.split(" ");
 	let cappedWords = string.map(function (word, index) {
