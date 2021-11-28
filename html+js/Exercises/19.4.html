@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			document.body.style.padding = "0";
+			document.body.style.margin = "0";
+			let navbar = document.createElement("nav");
+			navbar.style.width = "100%";
+			navbar.style.height = "5vh";
+			navbar.style.background = "darkcyan";
+			navbar.style.display = "flex";
+			navbar.style.alignItems = "center";
+			let logo = document.createElement("div");
+			logo.style.width = "5%";
+			logo.style.height = "4vh";
+			logo.style.background = "blue";
+			logo.style.margin = "0.25rem";
+			logo.style.fontSize = "2rem";
+			logo.innerText = "Logo";
+			let navList = document.createElement("ul");
+			navList.style.listStyle = "none";
+			navList.innerHTML = `<li>Home</li>
+           <li>About</li>
+           <li>Store</li>
+           <li>Contact</li>`;
+			navList.style.display = "flex";
+			let listItems = navList.querySelectorAll("li");
+			listItems.forEach((li) => {
+				li.style.margin = "1rem";
+				li.style.padding = "0.5rem";
+				li.style.borderRadius = "5px";
+				li.addEventListener("mouseenter", () => {
+					li.style.border = "1px solid black";
+				});
+				li.addEventListener("mouseleave", () => {
+					li.style.border = "1px solid transparent";
+				});
+			});
+			document.body.append(navbar);
+			navbar.append(logo, navList);
+		</script>
+	</body>
+</html>

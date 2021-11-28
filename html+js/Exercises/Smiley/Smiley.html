@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Smiley</title>
+	</head>
+	<body>
+		<script>
+			let textInput = document.createElement("input");
+			textInput.type = "text";
+			textInput.placeholder = "Pick a number...";
+			let subButton = document.createElement("input");
+			subButton.type = "submit";
+			document.body.append(textInput, subButton);
+			let smileyContainer = document.createElement("div");
+			document.body.appendChild(smileyContainer);
+
+			subButton.addEventListener("click", () => {
+				let regexFilter = /^\d+$/gi;
+				if (regexFilter.test(textInput.value)) {
+					let number = +textInput.value;
+					smileyContainer.innerHTML = "";
+					for (let i = 0; i < number; i++) {
+						smileyContainer.innerHTML += "<img src='480px-Smiley.png' width='40px'/>";
+					}
+				} else {
+					alert("Please insert a number!");
+					textInput.value = "";
+				}
+			});
+		</script>
+	</body>
+</html>

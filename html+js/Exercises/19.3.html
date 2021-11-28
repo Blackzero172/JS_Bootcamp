@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			.text-container {
+				padding-top: 5rem;
+				width: 100%;
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+			}
+			input {
+				width: 40px;
+				height: 40px;
+				text-align: center;
+			}
+			.input-container {
+				margin-bottom: 1rem;
+			}
+			button {
+				width: 75px;
+				height: 50px;
+				font-size: 1.5rem;
+			}
+			form {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="text-container">
+			<h2>Text to Copy:</h2>
+			<h2>123456</h2>
+
+			<form action="">
+				<div class="input-container">
+					<input type="text" required="" oninput="selectNext(this)" maxlength="1" />
+					<input type="text" required="" oninput="selectNext(this)" maxlength="1" />
+					<input type="text" required="" oninput="selectNext(this)" maxlength="1" />
+					<input type="text" required="" oninput="selectNext(this)" maxlength="1" />
+					<input type="text" required="" oninput="selectNext(this)" maxlength="1" />
+					<input type="text" required="" oninput="selectNext(this)" maxlength="1" />
+				</div>
+				<button type="submit">Verify</button>
+			</form>
+		</div>
+		<script>
+			let inputArr = [...document.querySelectorAll("input")];
+			const selectNext = (input) => {
+				let index = inputArr.indexOf(input) + 1;
+				if (inputArr[index]) {
+					inputArr[index].select();
+					inputArr[index].focus();
+				} else {
+					document.querySelector("form").submit();
+				}
+			};
+			function pasteClipboard(input) {
+				input.preventDefault();
+				input.stopPropagation();
+				let clipboardData = input.clipboardData || window.clipboardData;
+				let pastedData = clipboardData.getData("text");
+				pastedData = Array.from(pastedData);
+				console.log(pastedData);
+				for (let char in pastedData) {
+					if (inputArr[char]) inputArr[char].value = pastedData[char];
+				}
+				if (pastedData.length >= 6) {
+					document.querySelector("form").submit();
+				}
+			}
+			inputArr.forEach((inp) => {
+				inp.addEventListener("paste", pasteClipboard);
+			});
+		</script>
+	</body>
+</html>
