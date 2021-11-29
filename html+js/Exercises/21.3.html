@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			textarea {
+				width: 275px;
+				height: 120px;
+				resize: none;
+				display: block;
+				margin-bottom: 10px;
+			}
+			.flex-container {
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+				align-items: center;
+			}
+			button {
+				position: relative;
+			}
+			button p {
+				position: absolute;
+				background-color: lightgray;
+				opacity: 0;
+				width: 200px;
+				left: -70px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="flex-container">
+			<p>Why are you instrested in this position?(Min 100 characters)</p>
+			<textarea></textarea>
+			<button>
+				Verify
+				<p class="tooltip">Please type in more than a 100 characters</p>
+			</button>
+		</div>
+		<script>
+			let textarea = document.querySelector("textarea");
+			let btn = document.querySelector("button");
+			let tooltip = document.querySelector(".tooltip");
+			btn.addEventListener("click", () => {
+				console.log(textarea.value.length);
+				if (textarea.value.length < 100) {
+					tooltip.style.opacity = "100";
+				} else {
+					tooltip.style.opacity = "0";
+					textarea.value = "";
+				}
+			});
+		</script>
+	</body>
+</html>

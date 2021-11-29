@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.flex-container {
+				display: flex;
+				width: 100%;
+				justify-content: center;
+			}
+			.flex-container * {
+				margin: 25px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="flex-container">
+			<button class="plus-btn">➕</button>
+			<p>Font Size</p>
+			<button class="minus-btn">➖</button>
+		</div>
+		<script>
+			let textElement = document.querySelector("p");
+			let plusBtn = document.querySelector(".plus-btn");
+			let minusBtn = document.querySelector(".minus-btn");
+			let RegEx = /\d+/gi;
+			plusBtn.addEventListener("click", () => {
+				let filteredNumber = 0;
+				if (textElement.style.fontSize !== "") {
+					filteredNumber = +textElement.style.fontSize.match(RegEx);
+					if (filteredNumber < 100) {
+						textElement.style.fontSize = `${filteredNumber + 2}px`;
+					}
+				} else {
+					textElement.style.fontSize = "16px";
+				}
+			});
+			minusBtn.addEventListener("click", () => {
+				let filteredNumber = 0;
+				if (textElement.style.fontSize !== "") {
+					filteredNumber = +textElement.style.fontSize.match(RegEx);
+					if (filteredNumber > 6) {
+						textElement.style.fontSize = `${filteredNumber - 2}px`;
+					}
+				} else {
+					textElement.style.fontSize = "16px";
+				}
+			});
+		</script>
+	</body>
+</html>

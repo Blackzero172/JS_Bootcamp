@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://kit.fontawesome.com/cf89ae66f2.js" crossorigin="anonymous"></script>
+		<title>Document</title>
+		<style>
+			p {
+				background: #aaa;
+				padding: 15px;
+			}
+			i {
+				font-size: 100px;
+			}
+			.flex {
+				display: flex;
+				width: 100%;
+				justify-content: center;
+			}
+			.lightbulb-on {
+				color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="flex">
+			<p><i class="far fa-lightbulb fa-10x"></i></p>
+		</div>
+		<script>
+			let lightbulb = document.querySelector("i");
+			lightbulb.parentElement.addEventListener("click", () => {
+				lightbulb.classList.toggle("lightbulb-on");
+				lightbulb.classList.toggle("far");
+				lightbulb.classList.toggle("fas");
+			});
+		</script>
+	</body>
+</html>
