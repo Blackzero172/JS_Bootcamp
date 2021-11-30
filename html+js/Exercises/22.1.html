@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Form</title>
+		<style>
+			input {
+				display: block;
+				margin: 10px;
+			}
+			.flex {
+				width: 100%;
+				display: flex;
+				align-items: center;
+				position: relative;
+				flex-direction: column;
+			}
+			.confirm-window {
+				width: 30%;
+				background: white;
+				height: 150%;
+				position: absolute;
+				top: 0;
+				z-index: 2;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.bg-overlay {
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: #00000066;
+				width: 100%;
+				height: 100%;
+				transition: all 1s ease;
+				z-index: 1;
+			}
+			.confirm-window p {
+				margin-bottom: 20%;
+			}
+			.display-none {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="bg-overlay display-none"></div>
+		<form>
+			<div class="flex">
+				<label for="name">Name</label>
+				<input type="text" placeholder="Name" class="name-input" required />
+				<label for="age">Age</label>
+				<input type="number" placeholder="Age" class="age-input" required />
+				<label for="email">Email</label>
+				<input type="email" placeholder="Email" class="email-input" required />
+				<button type="submit">Submit</button>
+				<div class="confirm-window display-none">
+					<h3>Are you sure you want to submit this form?</h3>
+					<p></p>
+					<div class="button-container">
+						<button class="confirm-btn" type="button">Yes I'm Sure</button>
+						<button class="cancel-btn" type="button">No I Want to change it</button>
+					</div>
+				</div>
+				<script>
+					let formContainer = document.querySelector("form");
+					let confirmWindow = document.querySelector(".confirm-window");
+					let overlayBG = document.querySelector(".bg-overlay");
+					let nameInput = document.querySelector(".name-input");
+					let ageInput = document.querySelector(".age-input");
+					let emailInput = document.querySelector(".email-input");
+					formContainer.addEventListener("submit", (evt) => {
+						evt.preventDefault();
+						confirmWindow.querySelector("p").innerText = `Name : ${nameInput.value}
+						Age : ${ageInput.value}
+						Email : ${emailInput.value}
+						`;
+						confirmWindow.classList.remove("display-none");
+						overlayBG.classList.remove("display-none");
+					});
+					let confirmButton = document.querySelector(".confirm-btn");
+					let cancelButton = document.querySelector(".cancel-btn");
+					confirmButton.addEventListener("click", () => {
+						confirmWindow.querySelector("h3").innerText = "Congratulations you filed this form!";
+						confirmButton.classList.add("display-none");
+						cancelButton.classList.add("display-none");
+					});
+					cancelButton.addEventListener("click", () => {
+						console.log(confirmWindow.classList, confirmWindow.classList.toggle("display-none"));
+						confirmWindow.classList.add("display-none");
+						overlayBG.classList.add("display-none");
+					});
+				</script>
+			</div>
+		</form>
+	</body>
+</html>

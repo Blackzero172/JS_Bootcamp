@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Guess my Letter Game</title>
+		<style>
+			.flex {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.target-letter {
+				border: 1px solid black;
+				padding: 10px 15px;
+			}
+			button {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="flex">
+			<h2>Welcome to Guess My Letter</h2>
+
+			<p class="target-letter">?</p>
+
+			<h4 class="message">Guess a letter</h4>
+
+			<h3>Letters Guessed:</h3>
+			<p class="letters-guessed"></p>
+
+			<button type="button">Play Again</button>
+		</div>
+		<script>
+			const pickRandomChar = () => Math.floor(Math.random() * charArr.length);
+			let charArr = "abcedfghijklmnopqrstuvwxyz";
+			let selectedLetter = charArr[pickRandomChar()];
+			let letterElement = document.querySelector(".target-letter");
+			let messageElement = document.querySelector(".message");
+			let guessesElement = document.querySelector(".letters-guessed");
+			let resetBtn = document.querySelector("button");
+			let guessedLetters = [];
+			let gameOver = false;
+			console.log(selectedLetter);
+			document.body.addEventListener("keydown", (e) => {
+				if (!gameOver) {
+					let alphaRegEx = /^[a-z]$/gi;
+					if (alphaRegEx.test(e.key)) {
+						if (e.key === selectedLetter) {
+							messageElement.innerText = "Your Guess is Correct";
+							messageElement.style.color = "green";
+							letterElement.innerText = selectedLetter;
+							gameOver = true;
+							resetBtn.style.display = "block";
+						} else {
+							messageElement.style.color = "red";
+							if (guessedLetters.indexOf(e.key) === -1) {
+								messageElement.innerText = "Your Guess is Incorrect";
+								guessedLetters.push(e.key);
+							} else {
+								messageElement.innerText = `You already guessed ${e.key}`;
+							}
+							guessesElement.innerText = guessedLetters.join(",");
+						}
+					}
+				}
+			});
+			resetBtn.addEventListener("click", (e) => {
+				selectedLetter = charArr[pickRandomChar()];
+				letterElement.innerText = "?";
+				guessesElement.innerText = "";
+				guessedLetters = [];
+				messageElement.innerText = "Guess a letter";
+				messageElement.style.color = "black";
+				resetBtn.style.display = "none";
+				gameOver = false;
+			});
+		</script>
+	</body>
+</html>
