@@ -50,7 +50,6 @@
 				minuteElement: document.querySelector(".hours"),
 				start() {
 					this.intervalId = setInterval(() => {
-						console.log(this);
 						const { milisecondElement, secondElement, minuteElement } = this;
 						let miliseconds = parseInt(milisecondElement.innerText);
 						let seconds = parseInt(secondElement.innerText);
