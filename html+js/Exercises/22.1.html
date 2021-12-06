@@ -66,12 +66,12 @@
 					</div>
 				</div>
 				<script>
-					let formContainer = document.querySelector("form");
-					let confirmWindow = document.querySelector(".confirm-window");
-					let overlayBG = document.querySelector(".bg-overlay");
-					let nameInput = document.querySelector(".name-input");
-					let ageInput = document.querySelector(".age-input");
-					let emailInput = document.querySelector(".email-input");
+					const formContainer = document.querySelector("form");
+					const confirmWindow = document.querySelector(".confirm-window");
+					const overlayBackground = document.querySelector(".bg-overlay");
+					const nameInput = document.querySelector(".name-input");
+					const ageInput = document.querySelector(".age-input");
+					const emailInput = document.querySelector(".email-input");
 					formContainer.addEventListener("submit", (evt) => {
 						evt.preventDefault();
 						confirmWindow.querySelector("p").innerText = `Name : ${nameInput.value}
@@ -79,19 +79,21 @@
 						Email : ${emailInput.value}
 						`;
 						confirmWindow.classList.remove("display-none");
-						overlayBG.classList.remove("display-none");
+						overlayBackground.classList.remove("display-none");
 					});
-					let confirmButton = document.querySelector(".confirm-btn");
-					let cancelButton = document.querySelector(".cancel-btn");
+					const confirmButton = document.querySelector(".confirm-btn");
+					const cancelButton = document.querySelector(".cancel-btn");
 					confirmButton.addEventListener("click", () => {
 						confirmWindow.querySelector("h3").innerText = "Congratulations you filed this form!";
 						confirmButton.classList.add("display-none");
 						cancelButton.classList.add("display-none");
+						setTimeout(() => {
+							formContainer.submit();
+						}, 2000);
 					});
 					cancelButton.addEventListener("click", () => {
-						console.log(confirmWindow.classList, confirmWindow.classList.toggle("display-none"));
 						confirmWindow.classList.add("display-none");
-						overlayBG.classList.add("display-none");
+						overlayBackground.classList.add("display-none");
 					});
 				</script>
 			</div>

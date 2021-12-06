@@ -35,14 +35,14 @@
 			<button type="button">Play Again</button>
 		</div>
 		<script>
-			const pickRandomChar = () => Math.floor(Math.random() * charArr.length);
-			let charArr = "abcedfghijklmnopqrstuvwxyz";
-			let selectedLetter = charArr[pickRandomChar()];
-			let letterElement = document.querySelector(".target-letter");
-			let messageElement = document.querySelector(".message");
-			let guessesElement = document.querySelector(".letters-guessed");
-			let resetBtn = document.querySelector("button");
-			let guessedLetters = [];
+			const pickRandomChar = () => Math.floor(Math.random() * charArr.length),
+				charArr = "abcedfghijklmnopqrstuvwxyz",
+				selectedLetter = charArr[pickRandomChar()],
+				letterElement = document.querySelector(".target-letter"),
+				messageElement = document.querySelector(".message"),
+				guessesElement = document.querySelector(".letters-guessed"),
+				resetBtn = document.querySelector("button"),
+				guessedLetters = [];
 			let gameOver = false;
 			console.log(selectedLetter);
 			document.body.addEventListener("keydown", (e) => {

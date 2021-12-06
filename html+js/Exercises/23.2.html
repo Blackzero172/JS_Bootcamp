@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>StopWatch</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			h2 {
+				display: flex;
+				width: 100%;
+				justify-content: center;
+				font-size: 3rem;
+			}
+			p {
+				display: inline-block;
+			}
+			.btn-container {
+				display: flex;
+				width: 100%;
+				justify-content: center;
+			}
+			button {
+				width: 5vw;
+				height: 3vh;
+				margin: 0 1rem;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>
+			<p class="hours">00</p>
+			:
+			<p class="minutes">00</p>
+			:
+			<p class="seconds">00</p>
+		</h2>
+		<div class="btn-container">
+			<button type="button" class="start-btn">Start</button>
+			<button type="button" class="stop-btn">Stop</button>
+		</div>
+		<script>
+			const stopWatch = {
+				milisecondElement: document.querySelector(".seconds"),
+				secondElement: document.querySelector(".minutes"),
+				minuteElement: document.querySelector(".hours"),
+				start() {
+					this.intervalId = setInterval(() => {
+						console.log(this);
+						const { milisecondElement, secondElement, minuteElement } = this;
+						let miliseconds = parseInt(milisecondElement.innerText);
+						let seconds = parseInt(secondElement.innerText);
+						let minutes = parseInt(minuteElement.innerText);
+						miliseconds += 1;
+						if (miliseconds < 10) {
+							miliseconds = `0${miliseconds}`;
+						}
+						milisecondElement.innerText = miliseconds;
+						if (miliseconds >= 100) {
+							seconds += 1;
+							if (seconds < 10) {
+								seconds = `0${seconds}`;
+							}
+							secondElement.innerText = seconds;
+							milisecondElement.innerText = 00;
+						}
+						if (seconds >= 60) {
+							minutes += 1;
+							if (minutes < 10) {
+								minutes = `0${minutes}`;
+							}
+							minuteElement.innerText = minutes;
+							secondElement.innerText = 00;
+						}
+					}, 10);
+				},
+				stop() {
+					clearInterval(this.intervalId);
+				},
+			};
+			function startStopWatch() {
+				stopWatch.start();
+			}
+			function stopStopWatch() {
+				stopWatch.stop();
+			}
+			const startButton = document.querySelector(".start-btn");
+			startButton.addEventListener("click", startStopWatch);
+
+			const stopButton = document.querySelector(".stop-btn");
+			stopButton.addEventListener("click", stopStopWatch);
+		</script>
+	</body>
+</html>
