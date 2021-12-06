@@ -1,5 +1,6 @@
 const person = {
 	name: "John Wick",
+
 	printName() {
 		console.log(this.name);
 	},
@@ -10,4 +11,5 @@ const person = {
 		}, 1000);
 	},
 };
-person.printNameDelayed.call(person);
+const delayedPrint = person.printNameDelayed;
+delayedPrint.call(person);
