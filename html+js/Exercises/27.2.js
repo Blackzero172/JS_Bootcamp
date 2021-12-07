@@ -1,7 +1,7 @@
 function makeAllCaps(arr) {
 	return new Promise((resolve, reject) => {
 		const capsArr = arr.map((item) => {
-			if (/\d+/gi.test(item)) {
+			if (!/\w+/gi.test(item)) {
 				reject(item);
 			} else {
 				return item.toUpperCase();
@@ -13,7 +13,7 @@ function makeAllCaps(arr) {
 function sortWords(arr) {
 	return new Promise((resolve, reject) => {
 		arr.forEach((item) => {
-			if (/\d+/gi.test(item)) {
+			if (!/\w+/gi.test(item)) {
 				reject(item);
 			}
 		});
