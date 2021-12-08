@@ -1,0 +1,97 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+body {
+	background: #ddf;
+}
+.flex-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 1rem;
+}
+.username-input {
+	width: 10%;
+	height: 4vh;
+	margin-right: 1rem;
+	border: 1px solid gray;
+	background: #333;
+	color: #fff;
+}
+.username-input:focus {
+	outline-color: cyan;
+}
+.search-btn {
+	width: 2%;
+	background: cornflowerblue;
+	border: 1px solid gray;
+	transition: all 0.5s ease;
+}
+.search-btn:active {
+	background: #4e75bd;
+	border-color: #5c5c5c;
+}
+.search-animation {
+	animation: searching 0.5s ease 0s infinite backwards;
+}
+@keyframes searching {
+	0% {
+		transform: translate(0);
+	}
+
+	20% {
+		transform: translate(50%, 50%);
+	}
+	40% {
+		transform: translate(-50%, 50%);
+	}
+	60% {
+		transform: translate(-50%, -50%);
+	}
+	80% {
+		transform: translate(50%, -50%);
+	}
+	90% {
+		transform: translate(50%, 0);
+	}
+	100% {
+		transform: translate(0);
+	}
+}
+.card-container {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	width: 100%;
+	padding: 0 8%;
+	gap: 2rem;
+}
+.card {
+	width: 70%;
+	height: 30vh;
+	border: 3px solid brown;
+	background: cornflowerblue;
+}
+.card img {
+	width: 100%;
+}
+.error-popup {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #f00;
+	position: absolute;
+	top: 10px;
+	width: 20vw;
+	height: 10vh;
+	left: 40vw;
+	opacity: 1;
+	transition: all 1s ease;
+}
+.opacity-invisible {
+	opacity: 0;
+}
+.z-position {
+	z-index: -1;
+}

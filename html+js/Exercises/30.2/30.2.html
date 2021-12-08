@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://kit.fontawesome.com/cf89ae66f2.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="30.2.css" />
+		<title>Movie API</title>
+	</head>
+	<body>
+		<p class="error-popup opacity-invisible z-position">Could not find movie,Please try again</p>
+		<div class="flex-container">
+			<div class="button-container">
+				<input type="text" name="username" class="movie-input" placeholder="Search for a Movie..." />
+				<button type="button" class="search-btn"><i class="fas fa-search"></i></button>
+			</div>
+			<div class="movie-container"></div>
+		</div>
+
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="30.2.js"></script>
+	</body>
+</html>
